@@ -1,0 +1,184 @@
+:root {
+    --sky-plain: #eef4f8;
+    --ghibli-white: #ffffff;
+    --ghibli-green: #107c41;
+    --ghibli-dark: #1c2d23;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--sky-plain) !important;
+    color: var(--ghibli-dark) !important;
+    min-height: 100vh;
+}
+
+.scene {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: background-color 0.5s ease;
+}
+
+.background-scroller {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 400%; 
+    height: 100%;
+    background-image: url('./image/BG.webp'); 
+    background-size: auto 100%; 
+    background-repeat: repeat-x;
+    animation: drive 60s linear infinite;
+}
+
+.truck {
+    position: absolute;
+    bottom: 31%;
+    left: 5%; 
+    width: 22vw;
+    min-width: 120px;
+    max-width: 220px;
+    z-index: 2; 
+    animation: jitter 0.8s infinite alternate;
+}
+
+body.area-mode-active .background-scroller,
+body.area-mode-active .truck { 
+    display: none; 
+}
+
+body.area-mode-active .scene {
+    background-color: #f0f5f1 !important;
+    background-size: 20px 20px;
+}
+
+@keyframes drive { from { background-position: 0 0; } to { background-position: -2500px 0; } }
+@keyframes jitter { from { transform: translateY(0); } to { transform: translateY(3px); } }
+
+.container {
+    max-width: 700px;
+}
+
+h1#mainHeading {
+    color: var(--ghibli-dark) !important;
+    text-decoration: underline;
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: black !important;
+    font-size: 1rem;
+     margin-top: 30px;
+     margin-bottom: 8px;
+}
+
+.search-card {
+    background: var(--ghibli-white) !important; 
+    border-radius: 20px !important;
+    border: 1px solid var(--sky-plain) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); 
+    backdrop-filter: blur(8px);
+}
+
+.toggle-btn {
+    font-size: 1rem; 
+    color: var(--ghibli-green) !important;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.toggle-btn:hover {
+    color: var(--ghibli-dark) !important;
+}
+
+.search-box input, .input-group input, .input-group select, .multiple-results select {
+    background-color: var(--sky-plain) !important;
+    border: 1px solid var(--sky-plain) !important;
+    color: var(--ghibli-dark) !important;
+}
+
+.search-box input:focus, .input-group input:focus, .input-group select:focus, .multiple-results select:focus {
+    border-color: var(--ghibli-green) !important;
+    background-color: var(--ghibli-white) !important;
+    box-shadow: 0 0 0 3px rgba(16, 124, 65, 0.15) !important;
+}
+
+.primary-btn, #searchBtn {
+    background-color: var(--ghibli-green) !important;
+    border: none !important;
+    font-weight: 600;
+    color: var(--ghibli-white) !important;
+}
+
+.error {
+    background: var(--sky-plain) !important;
+    color: var(--ghibli-dark) !important;
+    border: 1px solid var(--ghibli-green) !important;
+    border-radius: 10px;
+}
+
+.result-card {
+    border-radius: 14px;
+    background-color: var(--ghibli-white) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.result-card h2 {
+    color: var(--ghibli-green) !important;
+}
+
+.label {
+    color: var(--ghibli-dark) !important;
+    font-size: 0.9rem;
+}
+
+.pin-highlight {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ghibli-green) !important;
+    background: var(--sky-plain) !important;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+}
+
+.status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.delivery {
+    background-color: var(--sky-plain) !important;
+    color: var(--ghibli-green) !important;
+}
+
+.non-delivery {
+    background-color: var(--sky-plain) !important;
+    color: var(--ghibli-dark) !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    h1#mainHeading {
+        font-size: 1.6rem;
+    }
+
+    .truck {
+        width: 150px;
+        bottom: 31%;
+    }
+
+    .result-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
